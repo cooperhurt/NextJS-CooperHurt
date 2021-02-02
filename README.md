@@ -1,2 +1,1 @@
-# NextJS-CooperHurt
-This is a personal GitHub page about me and my work
+This is a starter template for [Learn Next.js](https://nextjs.org/learn).
