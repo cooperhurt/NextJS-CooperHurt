@@ -1,10 +1,10 @@
 import Head from "next/head";
 
 interface MetaProps {
-    title?: string;
+    title?: string | String;
     subTitle?: string;
     keywords?: string;
-    description?: string;
+    description?: string | String;
 }
 
 /**

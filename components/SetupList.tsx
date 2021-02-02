@@ -1,19 +1,19 @@
-import ArticleItem from "./Setup";
+import SetupPreview from "./Setup";
 import articleStyles from "../styles/Setup.module.css";
-import { IArticle } from "../types";
+import { ISetup } from "../types";
 
-interface IArticleListProps {
-    articles: IArticle[];
+interface ISetupListProps {
+    setups: ISetup[];
 }
 
-const ArticleList: React.FC<IArticleListProps> = ({ articles }) => {
+const SetupList: React.FC<ISetupListProps> = ({ setups }) => {
     return (
         <div className={articleStyles.grid}>
-            {articles.map((article, index) => (
-                <ArticleItem article={article} key={index} />
+            {setups?.map((setup, index) => (
+                <SetupPreview setup={setup} key={setup._id + setup.Name} />
             ))}
         </div>
     );
 };
 
-export default ArticleList;
+export default SetupList;

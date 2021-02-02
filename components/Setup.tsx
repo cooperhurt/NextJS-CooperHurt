@@ -1,21 +1,20 @@
 import Link from "next/link";
 import articleStyles from "../styles/Setup.module.css";
-import { IArticle } from "../types";
+import { ISetup } from "../types";
 
 interface IArticleItemProps {
-    article: IArticle;
-    key: number
+    setup: ISetup;
 }
 
-const ArticleItem: React.FC<IArticleItemProps> = ({ article, key }) => {
+const SetupPreview: React.FC<IArticleItemProps> = ({ setup }) => {
     return (
-        <Link href={`/article/${article.id}`} key={key}>
+        <Link href={`/article/${setup._id}`} key={setup._id}>
             <a className={articleStyles.card}>
-                <h3>{article.title} &rarr;</h3>
-                <p>{article.excerpt}</p>
+                <h3>{setup.Name} &rarr;</h3>
+                <p>{setup.Track}</p>
             </a>
         </Link>
     );
 };
 
-export default ArticleItem;
+export default SetupPreview;

@@ -1,21 +1,22 @@
 import { server } from "../config";
-import ArticleList from "../components/SetupList";
+import SetupList from "../components/SetupList";
 
-export default function Home({ articles }) {
+export default function Home({ setups }) {
     return (
         <div>
-            <ArticleList articles={articles} />
+            <SetupList setups={setups} />
         </div>
     );
 }
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${server}/api/articles`);
-    const articles = await res.json();
+    const res = await fetch(`${server}/setups`);
+    const setupsResponse = await res.json();
+    const { setups } = setupsResponse;
 
     return {
         props: {
-            articles,
+            setups,
         },
     };
 };

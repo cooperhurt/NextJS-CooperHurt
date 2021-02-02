@@ -3,11 +3,11 @@ import { server } from "../../config";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Meta } from "../../components/Meta";
-import { IArticle } from "../../types";
-import ArticleList from "../../components/SetupList";
+import { ISetup } from "../../types";
+import SetupList from "../../components/SetupList";
 
 interface IArticleProps {
-    articles: IArticle[];
+    articles: ISetup[];
 }
 
 const article: React.FC<IArticleProps> = ({ articles }) => {
@@ -16,7 +16,7 @@ const article: React.FC<IArticleProps> = ({ articles }) => {
         <>
             <Meta title={"Articles"} description={"descript"} />
             <h1>Articles</h1>
-            <ArticleList articles={articles} />
+            <SetupList setups={articles} />
 
             <Link href="/">Go Back</Link>
         </>
@@ -24,7 +24,7 @@ const article: React.FC<IArticleProps> = ({ articles }) => {
 };
 
 export const getStaticProps = async () => {
-    const res = await fetch(`${server}/api/articles/`);
+    const res = await fetch(`${server}/setups/`);
 
     const articles = await res.json();
 
@@ -36,12 +36,13 @@ export const getStaticProps = async () => {
 };
 
 export const getStaticPaths = async () => {
-    const res = await fetch(`${server}/api/articles`);
+    const res = await fetch(`${server}/setups`);
 
-    const articles: IArticle[] = await res.json();
+    const setupsResponse = await res.json();
+    const { setups } = setupsResponse;
 
-    const ids = articles.map((article) => article.id);
-    const paths = ids.map((id) => ({ params: { id: id.toString() } }));
+    const ids = setups.map((setup: ISetup) => setup._id);
+    const paths = ids.map((id: any) => ({ params: { id: id.toString() } }));
 
     return {
         paths,
