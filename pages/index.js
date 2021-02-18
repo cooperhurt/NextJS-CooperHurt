@@ -4,7 +4,7 @@ import SetupList from "../components/SetupList";
 export default function Home({ setups }) {
     return (
         <div>
-            <SetupList setups={setups} />
+            <SetupList setups={setups} /> 
         </div>
     );
 }
